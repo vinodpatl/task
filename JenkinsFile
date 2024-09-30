@@ -1,8 +1,11 @@
+pipeline {
+    agent any
+    
 stages {
         stage('Checkout Code') {
             steps {
                 
-                git 'https://github.com/vinodpatl/task.git/'
+                git Branch:main  git 'https://github.com/vinodpatl/task.git/'
             }
         }
         
