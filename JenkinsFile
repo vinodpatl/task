@@ -1,10 +1,27 @@
-pipeline {
-    agent any
-    stages {
-        stage('Build') { 
+stages {
+        stage('Checkout Code') {
             steps {
-                sh 'npm install' 
+                
+                git 'https://github.com/vinodpatl/task.git/'
             }
         }
-    }
-}
+        
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Build Project') {
+            steps {
+                
+                sh 'npm run build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+              
+                sh 'npm test'
+            }
+        }
