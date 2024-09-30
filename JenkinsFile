@@ -28,3 +28,20 @@ stages {
                 sh 'npm test'
             }
         }
+stage('Package Artifacts') {
+            steps {
+                // Archive built files such as CSS and JavaScript assets
+                archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build completed successfully.'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
